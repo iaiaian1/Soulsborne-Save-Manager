@@ -221,7 +221,7 @@
             this.quicksaveToggle.TabIndex = 19;
             this.quicksaveToggle.Text = "Off";
             this.quicksaveToggle.UseVisualStyleBackColor = true;
-            this.quicksaveToggle.CheckedChanged += new System.EventHandler(this.quicksaveToggle_CheckedChanged);
+            this.quicksaveToggle.Click += new System.EventHandler(this.quicksaveToggle_Click);
             // 
             // backupButton
             // 
@@ -269,6 +269,7 @@
             this.intervalCombobox.Name = "intervalCombobox";
             this.intervalCombobox.Size = new System.Drawing.Size(58, 21);
             this.intervalCombobox.TabIndex = 23;
+            this.intervalCombobox.Text = "5";
             // 
             // backupRadio
             // 

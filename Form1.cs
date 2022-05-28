@@ -103,13 +103,18 @@ namespace Soulsborne_Save_Manager
             }
         }
 
-        private void quickSave(Boolean status) {
+        private void quickSaveCopy() {
+            File.Copy($"{srcTextbox.Text}/{saveTextbox.Text}", $"{quickTextbox.Text}/qck-{DateTime.Now.ToString("yyyyMMddHHmmss")}-{saveTextbox.Text}");
+        }
+
+        private void quickSaveTimer(Boolean status) {
             float setTime = Int64.Parse(intervalCombobox.Text) * 60000;
-            Console.WriteLine(setTime);
+            //Console.WriteLine(setTime);
 
             if (!File.Exists($"{srcTextbox.Text}/{saveTextbox.Text}"))
             {
                 MessageBox.Show("Source file/folder does not exist!");
+                quicksaveToggle.Checked = false;
             }
             else {
                 if (status == true)
@@ -118,7 +123,6 @@ namespace Soulsborne_Save_Manager
                     aTimer.Elapsed += OnTimedEvent;
                     aTimer.AutoReset = true;
                     aTimer.Enabled = true;
-                    limitSave();
                 }
                 else {
                     aTimer.Stop();
@@ -129,9 +133,10 @@ namespace Soulsborne_Save_Manager
         //Part of quicksave function, this is called
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
-            Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
-                              e.SignalTime);
-            File.Copy($"{srcTextbox.Text}/{saveTextbox.Text}", $"{quickTextbox.Text}/qck-{DateTime.Now.ToString("yyyyMMddHHmmss")}-{saveTextbox.Text}");
+            //Console line is for testing, comment it out.
+            //Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}", e.SignalTime);
+            quickSaveCopy();
+            limitSave();            
         }
 
         private void backupSave() {
@@ -146,35 +151,46 @@ namespace Soulsborne_Save_Manager
 
         private void loadBackup() {
             String loadBackupDir = "";
-            if (backupRadio.Checked == true) {
+            if (backupRadio.Checked == true) 
+            {
                 loadBackupDir = bakTextbox.Text;
             }
             else if (quickRadio.Checked == true)
             {
-                loadBackupDir = quickTextbox.Text;
+                loadBackupDir = quickTextbox.Text;                
             }
-            List<string> files = new List<string>();
-            foreach (var file in new DirectoryInfo(loadBackupDir).GetFiles().OrderByDescending(x => x.LastWriteTime)) {
-                files.Add(file.ToString());
+
+            if (loadBackupDir == "")
+            {
+                MessageBox.Show("Give proper backup/quicksave directories");
             }
-            File.Copy($"{loadBackupDir}/{files[0]}", $"{srcTextbox.Text}/{files[0]}", true);
+            else {
+                List<string> files = new List<string>();
+                foreach (var file in new DirectoryInfo(loadBackupDir).GetFiles().OrderByDescending(x => x.LastWriteTime))
+                {
+                    files.Add(file.ToString());
+                }
+                File.Copy($"{loadBackupDir}/{files[0]}", $"{srcTextbox.Text}/{saveTextbox.Text}", true);
+            }
+
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
             saveDirs();
         }
+
         private void quicksaveButton_Click(object sender, EventArgs e)
         {
             if (File.Exists($"{srcTextbox.Text}/{saveTextbox.Text}"))
             {
-                File.Copy($"{srcTextbox.Text}/{saveTextbox.Text}", $"{quickTextbox.Text}/qck-{DateTime.Now.ToString("yyyyMMddHHmmss")}-{saveTextbox.Text}");
+                quickSaveCopy();
                 limitSave();
             }
             else {
                 MessageBox.Show("File does not exist!");
             }
-            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -216,7 +232,7 @@ namespace Soulsborne_Save_Manager
         {
             MessageBox.Show(
                 "Soulsborne Save Manager by iaiaian1\n" +
-                "Source: \n\n",
+                "Source: https://github.com/iaiaian1/Soulsborne-Save-Manager\n\n",
                 "About\n");
         }
 
@@ -225,14 +241,14 @@ namespace Soulsborne_Save_Manager
             backupSave();
         }
 
-        private void quicksaveToggle_CheckedChanged(object sender, EventArgs e)
-        {
-            quickSave(quicksaveToggle.Checked);
-        }
-
         private void loadButton_Click(object sender, EventArgs e)
         {
             loadBackup();
+        }
+
+        private void quicksaveToggle_Click(object sender, EventArgs e)
+        {
+            quickSaveTimer(quicksaveToggle.Checked);
         }
     }
 }
