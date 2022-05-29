@@ -37,9 +37,9 @@ namespace Soulsborne_Save_Manager
                 }
                 srcTextbox.Text = dirsList[0];
                 bakTextbox.Text = dirsList[1];
-                quickTextbox.Text = dirsList[2];
+                autosaveTextbox.Text = dirsList[2];
                 saveTextbox.Text = dirsList[3];
-                quickLimitTextbox.Text = dirsList[4];
+                autosaveLimitTextbox.Text = dirsList[4];
                 intervalCombobox.Text = dirsList[5];
             }
         }
@@ -50,30 +50,30 @@ namespace Soulsborne_Save_Manager
             //List<string> dirsList = new List<string> {
             //    srcTextbox.Text,
             //    bakTextbox.Text,
-            //    quickTextbox.Text,
+            //    autosaveTextbox.Text,
             //    saveTextbox.Text
             //};
             List<string> dirsList = new List<string>();
 
-            if (srcTextbox.Text == "" || bakTextbox.Text == "" || quickTextbox.Text == "" || saveTextbox.Text == "")
+            if (srcTextbox.Text == "" || bakTextbox.Text == "" || autosaveTextbox.Text == "" || saveTextbox.Text == "")
             {
                 MessageBox.Show("Give proper directories");
             }
             else
             {
-                if (quicksaveToggle.Checked == true)
+                if (autosaveToggle.Checked == true)
                 {
-                    if (quickLimitTextbox.Value == 0)
+                    if (autosaveLimitTextbox.Value == 0)
                     {
-                        MessageBox.Show("Enter proper limit for quicksave or turn off. Default value is set to 5 (min).");
-                        quickLimitTextbox.Value = 5;
+                        MessageBox.Show("Enter proper limit for autosave or turn off. Default value is set to 5 (min).");
+                        autosaveLimitTextbox.Value = 5;
                     }
                 }
                 dirsList.Add(srcTextbox.Text);
                 dirsList.Add(bakTextbox.Text);
-                dirsList.Add(quickTextbox.Text);
+                dirsList.Add(autosaveTextbox.Text);
                 dirsList.Add(saveTextbox.Text);
-                dirsList.Add(quickLimitTextbox.Text);
+                dirsList.Add(autosaveLimitTextbox.Text);
                 dirsList.Add(intervalCombobox.Text);
 
                 if (!Directory.Exists($"{path}/dir"))
@@ -86,15 +86,16 @@ namespace Soulsborne_Save_Manager
 
         private void limitSave()
         {
-            String quicksaveFolder = $"{quickTextbox.Text}";
-            int quicksaveLimit = (int)quickLimitTextbox.Value;
-            if (Directory.Exists(quicksaveFolder))
+            String autosaveFolder = $"{autosaveTextbox.Text}";
+            //String autosaveExtension = saveTextbox.Text.Split('.')[1];
+            int autosaveLimit = (int)autosaveLimitTextbox.Value;
+            if (Directory.Exists(autosaveFolder))
             {
-                int quicksaveCount = Directory.GetFiles(quicksaveFolder, "*", SearchOption.TopDirectoryOnly).Length;
-                if (quicksaveCount > quicksaveLimit)
+                int autosaveCount = Directory.GetFiles(autosaveFolder, "*.sl2", SearchOption.TopDirectoryOnly).Length;
+                if (autosaveCount > autosaveLimit)
                 {
-                    //Delete oldest, skip newer inside the quicksavelimit value
-                    foreach (var file in new DirectoryInfo(quicksaveFolder).GetFiles().OrderByDescending(x => x.LastWriteTime).Skip(4))
+                    //Delete oldest, skip newer inside the autosavelimit value
+                    foreach (var file in new DirectoryInfo(autosaveFolder).GetFiles("*.sl2").OrderByDescending(x => x.LastWriteTime).Skip(autosaveLimit))
                     {
                         file.Delete();
                     }
@@ -103,18 +104,18 @@ namespace Soulsborne_Save_Manager
             }
         }
 
-        private void quickSaveCopy() {
-            File.Copy($"{srcTextbox.Text}/{saveTextbox.Text}", $"{quickTextbox.Text}/qck-{DateTime.Now.ToString("yyyyMMddHHmmss")}-{saveTextbox.Text}");
+        private void autoSaveCopy() {
+            File.Copy($"{srcTextbox.Text}/{saveTextbox.Text}", $"{autosaveTextbox.Text}/qck-{DateTime.Now.ToString("yyyyMMddHHmmss")}-{saveTextbox.Text}");
         }
 
-        private void quickSaveTimer(Boolean status) {
+        private void autoSaveTimer(Boolean status) {
             float setTime = Int64.Parse(intervalCombobox.Text) * 60000;
             //Console.WriteLine(setTime);
 
             if (!File.Exists($"{srcTextbox.Text}/{saveTextbox.Text}"))
             {
                 MessageBox.Show("Source file/folder does not exist!");
-                quicksaveToggle.Checked = false;
+                autosaveToggle.Checked = false;
             }
             else {
                 if (status == true)
@@ -130,12 +131,12 @@ namespace Soulsborne_Save_Manager
                 }
             }
         }
-        //Part of quicksave function, this is called
+        //Part of autosave function, this is called
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
         {
             //Console line is for testing, comment it out.
             //Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}", e.SignalTime);
-            quickSaveCopy();
+            autoSaveCopy();
             limitSave();            
         }
 
@@ -155,14 +156,14 @@ namespace Soulsborne_Save_Manager
             {
                 loadBackupDir = bakTextbox.Text;
             }
-            else if (quickRadio.Checked == true)
+            else if (autosaveRadio.Checked == true)
             {
-                loadBackupDir = quickTextbox.Text;                
+                loadBackupDir = autosaveTextbox.Text;                
             }
 
             if (loadBackupDir == "")
             {
-                MessageBox.Show("Give proper backup/quicksave directories");
+                MessageBox.Show("Give proper backup/autosave directories");
             }
             else {
                 List<string> files = new List<string>();
@@ -180,11 +181,11 @@ namespace Soulsborne_Save_Manager
             saveDirs();
         }
 
-        private void quicksaveButton_Click(object sender, EventArgs e)
+        private void autosaveButton_Click(object sender, EventArgs e)
         {
             if (File.Exists($"{srcTextbox.Text}/{saveTextbox.Text}"))
             {
-                quickSaveCopy();
+                autoSaveCopy();
                 limitSave();
             }
             else {
@@ -210,10 +211,10 @@ namespace Soulsborne_Save_Manager
             bakTextbox.Text = folderBrowserDialog1.SelectedPath;
         }
 
-        private void quickFolderDialogBtn_Click(object sender, EventArgs e)
+        private void autosaveFolderDialogBtn_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowDialog();
-            quickTextbox.Text = folderBrowserDialog1.SelectedPath;
+            autosaveTextbox.Text = folderBrowserDialog1.SelectedPath;
         }
 
         //Help and about messageboxes
@@ -222,7 +223,7 @@ namespace Soulsborne_Save_Manager
             MessageBox.Show(
                 "SOURCE - Savefile location, usually in AppData/Roaming/GameName \n" +
                 "BACKUP - Where you want to store the backup\n" +
-                "QUICKSAVE - Where quicksave will be stashed\n" +
+                "AUTOSAVE - Where autosave will be stashed\n" +
                 "FILENAME - Name of savefile, for Elden Ring its ER0000.sl2. You get it.\n\n" +
                 "This application is basically a file copier.",
                 "Help");
@@ -246,9 +247,9 @@ namespace Soulsborne_Save_Manager
             loadBackup();
         }
 
-        private void quicksaveToggle_Click(object sender, EventArgs e)
+        private void autosaveToggle_Click(object sender, EventArgs e)
         {
-            quickSaveTimer(quicksaveToggle.Checked);
+            autoSaveTimer(autosaveToggle.Checked);
         }
     }
 }

@@ -35,26 +35,26 @@
             this.srcTextbox = new System.Windows.Forms.TextBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.quickTextbox = new System.Windows.Forms.TextBox();
+            this.autosaveTextbox = new System.Windows.Forms.TextBox();
             this.saveTextbox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.helpBtn = new System.Windows.Forms.Button();
             this.bakFolderDialogBtn = new System.Windows.Forms.Button();
-            this.quickFolderDialogBtn = new System.Windows.Forms.Button();
+            this.autosaveFolderDialogBtn = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.srcFolderDialogBtn = new System.Windows.Forms.Button();
             this.aboutButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.quickLimitTextbox = new System.Windows.Forms.NumericUpDown();
-            this.quicksaveToggle = new MetroFramework.Controls.MetroToggle();
+            this.autosaveLimitTextbox = new System.Windows.Forms.NumericUpDown();
+            this.autosaveToggle = new MetroFramework.Controls.MetroToggle();
             this.backupButton = new System.Windows.Forms.Button();
             this.loadButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.intervalCombobox = new System.Windows.Forms.ComboBox();
             this.backupRadio = new System.Windows.Forms.RadioButton();
-            this.quickRadio = new System.Windows.Forms.RadioButton();
-            this.quicksaveButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.quickLimitTextbox)).BeginInit();
+            this.autosaveRadio = new System.Windows.Forms.RadioButton();
+            this.autosaveButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.autosaveLimitTextbox)).BeginInit();
             this.SuspendLayout();
             // 
             // srcLabel
@@ -109,17 +109,17 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 68);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 20);
+            this.label3.Size = new System.Drawing.Size(124, 20);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Quicksave folder:";
+            this.label3.Text = "Autosave folder:";
             // 
-            // quickTextbox
+            // autosaveTextbox
             // 
-            this.quickTextbox.Location = new System.Drawing.Point(159, 68);
-            this.quickTextbox.Name = "quickTextbox";
-            this.quickTextbox.ReadOnly = true;
-            this.quickTextbox.Size = new System.Drawing.Size(333, 20);
-            this.quickTextbox.TabIndex = 8;
+            this.autosaveTextbox.Location = new System.Drawing.Point(159, 68);
+            this.autosaveTextbox.Name = "autosaveTextbox";
+            this.autosaveTextbox.ReadOnly = true;
+            this.autosaveTextbox.Size = new System.Drawing.Size(333, 20);
+            this.autosaveTextbox.TabIndex = 8;
             // 
             // saveTextbox
             // 
@@ -160,15 +160,15 @@
             this.bakFolderDialogBtn.UseVisualStyleBackColor = true;
             this.bakFolderDialogBtn.Click += new System.EventHandler(this.bakFolderDialogBtn_Click);
             // 
-            // quickFolderDialogBtn
+            // autosaveFolderDialogBtn
             // 
-            this.quickFolderDialogBtn.Location = new System.Drawing.Point(498, 68);
-            this.quickFolderDialogBtn.Name = "quickFolderDialogBtn";
-            this.quickFolderDialogBtn.Size = new System.Drawing.Size(25, 20);
-            this.quickFolderDialogBtn.TabIndex = 14;
-            this.quickFolderDialogBtn.Text = "...";
-            this.quickFolderDialogBtn.UseVisualStyleBackColor = true;
-            this.quickFolderDialogBtn.Click += new System.EventHandler(this.quickFolderDialogBtn_Click);
+            this.autosaveFolderDialogBtn.Location = new System.Drawing.Point(498, 68);
+            this.autosaveFolderDialogBtn.Name = "autosaveFolderDialogBtn";
+            this.autosaveFolderDialogBtn.Size = new System.Drawing.Size(25, 20);
+            this.autosaveFolderDialogBtn.TabIndex = 14;
+            this.autosaveFolderDialogBtn.Text = "...";
+            this.autosaveFolderDialogBtn.UseVisualStyleBackColor = true;
+            this.autosaveFolderDialogBtn.Click += new System.EventHandler(this.autosaveFolderDialogBtn_Click);
             // 
             // srcFolderDialogBtn
             // 
@@ -196,32 +196,32 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 159);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(123, 20);
+            this.label2.Size = new System.Drawing.Size(111, 20);
             this.label2.TabIndex = 17;
-            this.label2.Text = "Quicksave Limit:";
+            this.label2.Text = "Autosave limit:";
             // 
-            // quickLimitTextbox
+            // autosaveLimitTextbox
             // 
-            this.quickLimitTextbox.Location = new System.Drawing.Point(159, 159);
-            this.quickLimitTextbox.Name = "quickLimitTextbox";
-            this.quickLimitTextbox.Size = new System.Drawing.Size(58, 20);
-            this.quickLimitTextbox.TabIndex = 18;
-            this.quickLimitTextbox.Value = new decimal(new int[] {
+            this.autosaveLimitTextbox.Location = new System.Drawing.Point(159, 159);
+            this.autosaveLimitTextbox.Name = "autosaveLimitTextbox";
+            this.autosaveLimitTextbox.Size = new System.Drawing.Size(58, 20);
+            this.autosaveLimitTextbox.TabIndex = 18;
+            this.autosaveLimitTextbox.Value = new decimal(new int[] {
             5,
             0,
             0,
             0});
             // 
-            // quicksaveToggle
+            // autosaveToggle
             // 
-            this.quicksaveToggle.AutoSize = true;
-            this.quicksaveToggle.Location = new System.Drawing.Point(16, 229);
-            this.quicksaveToggle.Name = "quicksaveToggle";
-            this.quicksaveToggle.Size = new System.Drawing.Size(80, 17);
-            this.quicksaveToggle.TabIndex = 19;
-            this.quicksaveToggle.Text = "Off";
-            this.quicksaveToggle.UseVisualStyleBackColor = true;
-            this.quicksaveToggle.Click += new System.EventHandler(this.quicksaveToggle_Click);
+            this.autosaveToggle.AutoSize = true;
+            this.autosaveToggle.Location = new System.Drawing.Point(16, 229);
+            this.autosaveToggle.Name = "autosaveToggle";
+            this.autosaveToggle.Size = new System.Drawing.Size(80, 17);
+            this.autosaveToggle.TabIndex = 19;
+            this.autosaveToggle.Text = "Off";
+            this.autosaveToggle.UseVisualStyleBackColor = true;
+            this.autosaveToggle.Click += new System.EventHandler(this.autosaveToggle_Click);
             // 
             // backupButton
             // 
@@ -241,7 +241,7 @@
             this.loadButton.Name = "loadButton";
             this.loadButton.Size = new System.Drawing.Size(204, 108);
             this.loadButton.TabIndex = 21;
-            this.loadButton.Text = "Load Backup";
+            this.loadButton.Text = "Load backup";
             this.loadButton.UseVisualStyleBackColor = true;
             this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
             // 
@@ -251,9 +251,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 191);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 20);
+            this.label5.Size = new System.Drawing.Size(134, 20);
             this.label5.TabIndex = 22;
-            this.label5.Text = "Quicksave interval:";
+            this.label5.Text = "Autosave interval:";
             // 
             // intervalCombobox
             // 
@@ -269,13 +269,12 @@
             this.intervalCombobox.Name = "intervalCombobox";
             this.intervalCombobox.Size = new System.Drawing.Size(58, 21);
             this.intervalCombobox.TabIndex = 23;
-            this.intervalCombobox.Text = "5";
             // 
             // backupRadio
             // 
             this.backupRadio.AutoSize = true;
             this.backupRadio.Checked = true;
-            this.backupRadio.Location = new System.Drawing.Point(321, 274);
+            this.backupRadio.Location = new System.Drawing.Point(313, 274);
             this.backupRadio.Name = "backupRadio";
             this.backupRadio.Size = new System.Drawing.Size(62, 17);
             this.backupRadio.TabIndex = 24;
@@ -283,26 +282,26 @@
             this.backupRadio.Text = "Backup";
             this.backupRadio.UseVisualStyleBackColor = true;
             // 
-            // quickRadio
+            // autosaveRadio
             // 
-            this.quickRadio.AutoSize = true;
-            this.quickRadio.Location = new System.Drawing.Point(403, 274);
-            this.quickRadio.Name = "quickRadio";
-            this.quickRadio.Size = new System.Drawing.Size(53, 17);
-            this.quickRadio.TabIndex = 25;
-            this.quickRadio.Text = "Quick";
-            this.quickRadio.UseVisualStyleBackColor = true;
+            this.autosaveRadio.AutoSize = true;
+            this.autosaveRadio.Location = new System.Drawing.Point(396, 274);
+            this.autosaveRadio.Name = "autosaveRadio";
+            this.autosaveRadio.Size = new System.Drawing.Size(70, 17);
+            this.autosaveRadio.TabIndex = 25;
+            this.autosaveRadio.Text = "Autosave";
+            this.autosaveRadio.UseVisualStyleBackColor = true;
             // 
-            // quicksaveButton
+            // autosaveButton
             // 
-            this.quicksaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quicksaveButton.Location = new System.Drawing.Point(288, 145);
-            this.quicksaveButton.Name = "quicksaveButton";
-            this.quicksaveButton.Size = new System.Drawing.Size(204, 108);
-            this.quicksaveButton.TabIndex = 26;
-            this.quicksaveButton.Text = "Quicksave now";
-            this.quicksaveButton.UseVisualStyleBackColor = true;
-            this.quicksaveButton.Click += new System.EventHandler(this.quicksaveButton_Click);
+            this.autosaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.autosaveButton.Location = new System.Drawing.Point(288, 145);
+            this.autosaveButton.Name = "autosaveButton";
+            this.autosaveButton.Size = new System.Drawing.Size(204, 108);
+            this.autosaveButton.TabIndex = 26;
+            this.autosaveButton.Text = "Autosave now";
+            this.autosaveButton.UseVisualStyleBackColor = true;
+            this.autosaveButton.Click += new System.EventHandler(this.autosaveButton_Click);
             // 
             // Form1
             // 
@@ -310,24 +309,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.ClientSize = new System.Drawing.Size(538, 469);
-            this.Controls.Add(this.quicksaveButton);
-            this.Controls.Add(this.quickRadio);
+            this.Controls.Add(this.autosaveButton);
+            this.Controls.Add(this.autosaveRadio);
             this.Controls.Add(this.backupRadio);
             this.Controls.Add(this.intervalCombobox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.loadButton);
             this.Controls.Add(this.backupButton);
-            this.Controls.Add(this.quicksaveToggle);
-            this.Controls.Add(this.quickLimitTextbox);
+            this.Controls.Add(this.autosaveToggle);
+            this.Controls.Add(this.autosaveLimitTextbox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.aboutButton);
             this.Controls.Add(this.srcFolderDialogBtn);
-            this.Controls.Add(this.quickFolderDialogBtn);
+            this.Controls.Add(this.autosaveFolderDialogBtn);
             this.Controls.Add(this.bakFolderDialogBtn);
             this.Controls.Add(this.helpBtn);
             this.Controls.Add(this.saveTextbox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.quickTextbox);
+            this.Controls.Add(this.autosaveTextbox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.srcTextbox);
@@ -339,7 +338,7 @@
             this.Name = "Form1";
             this.Text = "Soulsborne Save Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.quickLimitTextbox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autosaveLimitTextbox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,25 +352,25 @@
         private System.Windows.Forms.TextBox srcTextbox;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox quickTextbox;
+        private System.Windows.Forms.TextBox autosaveTextbox;
         private System.Windows.Forms.TextBox saveTextbox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button helpBtn;
         private System.Windows.Forms.Button bakFolderDialogBtn;
-        private System.Windows.Forms.Button quickFolderDialogBtn;
+        private System.Windows.Forms.Button autosaveFolderDialogBtn;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button srcFolderDialogBtn;
         private System.Windows.Forms.Button aboutButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown quickLimitTextbox;
-        private MetroFramework.Controls.MetroToggle quicksaveToggle;
+        private System.Windows.Forms.NumericUpDown autosaveLimitTextbox;
+        private MetroFramework.Controls.MetroToggle autosaveToggle;
         private System.Windows.Forms.Button backupButton;
         private System.Windows.Forms.Button loadButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox intervalCombobox;
         private System.Windows.Forms.RadioButton backupRadio;
-        private System.Windows.Forms.RadioButton quickRadio;
-        private System.Windows.Forms.Button quicksaveButton;
+        private System.Windows.Forms.RadioButton autosaveRadio;
+        private System.Windows.Forms.Button autosaveButton;
     }
 }
 
