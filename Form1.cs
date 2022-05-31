@@ -203,18 +203,30 @@ namespace Soulsborne_Save_Manager
         {
             folderBrowserDialog1.ShowDialog();
             srcTextbox.Text = folderBrowserDialog1.SelectedPath;
+            if (folderBrowserDialog1.SelectedPath == "")
+            {
+                loadDirs();
+            }
         }
 
         private void bakFolderDialogBtn_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowDialog();
             bakTextbox.Text = folderBrowserDialog1.SelectedPath;
+            if (folderBrowserDialog1.SelectedPath == "")
+            {
+                loadDirs();
+            }
         }
 
         private void autosaveFolderDialogBtn_Click(object sender, EventArgs e)
         {
             folderBrowserDialog1.ShowDialog();
             autosaveTextbox.Text = folderBrowserDialog1.SelectedPath;
+            if (folderBrowserDialog1.SelectedPath == "")
+            {
+                loadDirs();
+            }
         }
 
         //Help and about messageboxes
